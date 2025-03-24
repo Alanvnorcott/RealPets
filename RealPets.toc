@@ -1,0 +1,11 @@
+## Interface: 11506
+## Title: RealPets
+## Notes: A more immersive addon for hunters that love their furry friends!
+## Author: Kgleez
+## Version: 1.0.0
+## RequiredDeps:
+## X-Curse-Project-ID: 999999
+## SavedVariables:
+## SavedVariablesPerCharacter:
+
+RealPets.lua
