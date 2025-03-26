@@ -51,15 +51,22 @@ SlashCmdList["MYADDON"] = function()
     end
 end
 
+local prevPetXP = 0
 local function eventHandler(self, event, ...)
     if event == "PLAYER_REGEN_ENABLED" then
         print("RealPets: " .. UnitName("pet") .. " has exited combat")
     elseif event == "PLAYER_REGEN_DISABLED" then
-        print("RealPets: " .. UnitName("pet") .. " has exited combat")
+        print("RealPets: " .. UnitName("pet") .. " has entered combat")
     elseif event == "UNIT_PET_EXPERIENCE" then
         local currPetXP, nextPetXP = GetPetExperience();
-        print("RealPets: " .. UnitName("pet") .. " has gained some more xp")
-        print("RealPets: " .. UnitName("pet") .. " is at " .. currPetXP .. " / " .. nextPetXP);
+        local xpGained = currPetXP - prevPetXP
+        if xpGained > 0 then
+            print("RealPets: " .. UnitName("pet") .. " gained " .. xpGained .. " XP!")
+        end
+        
+        prevPetXP = currPetXP
+        print("RealPets: " .. UnitName("pet") .. " is at " .. currPetXP .. " / " .. nextPetXP)
+        
     end
 end
 
